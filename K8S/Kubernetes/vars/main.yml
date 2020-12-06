@@ -1,0 +1,17 @@
+---
+# vars file for Kubernetes
+Pre_pkg_docker:
+  - apt-transport-https
+  - ca-certificates
+  - curl
+  - software-properties-common
+
+kube_packages:
+  - kubeadm
+  - kubelet
+  - kubectl
+
+token_file: join_cmd
+
+master-node: master
+worker-node: node

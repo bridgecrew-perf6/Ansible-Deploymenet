@@ -1,0 +1,25 @@
+---
+- name: Updating the existing list of Packages
+  command: "apt-get update"
+- name: Pre-packages for Docker
+  apt: name={{ Pre_pkg_docker }} state=latest
+- name: Adding GPG key for the official Docker repository
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+- name: Adding Docker repo to Sources
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
+    state: present
+- name: Updating the Packages databese as Docker repo has added
+  command: "apt update"
+- name: Installaing Docker CE
+  apt: name=docker-ce state=latest
+- name: Starting the Docker daemon 
+  service: name=docker state=started enabled=yes
+- name: Adding Ansible User to Docker group
+  user:
+    name: "{{ ansible_user }}"
+    group: docker
+    append: yes
+  tags: docker-user

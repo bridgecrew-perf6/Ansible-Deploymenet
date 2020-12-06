@@ -1,0 +1,4 @@
+[k8s_worker]
+node ansible_ssh_host=35.188.48.140
+[k8s_master]
+master ansible_ssh_host=34.70.99.230

@@ -1,0 +1,11 @@
+---
+- name: Disable swap memory (if running) on both the nodes
+  command: "swapoff -a"
+
+- name: setting hostname on master
+  shell: " hostnamectl set-hostname master"
+  when: Kubernetes =='master'
+
+- name: setting hostname on node
+  shell: " hostnamectl set-hostname node"
+  when: Kubernetes =='node'

@@ -1,0 +1,10 @@
+---
+- name: copying the join command output
+  copy:
+    src: "{{ token_file }}"
+    dest: /tmp/join.sh
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: 0744
+- name: running the join command to join worker nodes to cluster
+  shell: "sh /tmp/join.sh"

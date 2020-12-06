@@ -1,0 +1,9 @@
+---
+# tasks file for Kubernetes
+- include: docker_setup.yml
+- include: Base-setup-k8s.yml
+- include: Kubernetes-deployment.yml
+- include: master.yml
+  when: Kubernetes =='master'
+- include: node.yml
+  when: Kubernetes == 'node'

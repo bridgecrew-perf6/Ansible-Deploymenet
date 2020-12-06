@@ -1,5 +1,6 @@
 source ~/.bash_profile
 cat /dev/null > ../Inventory/inventory.txt
+terraform init
 terraform plan \
   -out out.terraform
 terraform apply out.terraform
